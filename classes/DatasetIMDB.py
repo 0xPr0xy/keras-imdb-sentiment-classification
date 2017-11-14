@@ -22,8 +22,8 @@ class DatasetIMDB(object):
         word_to_id["<START>"] = 1
         word_to_id["<UNK>"] = 2
 
-        self.character_to_remove = ["<PAD> ", "<START> ", "<UNK> "]
-        
+        self.characters_to_remove = ["<PAD> ", "<START> ", "<UNK> "]
+
         id_to_word = {value:key for key,value in  word_to_id.items()}
 
         self.word_to_id = word_to_id
