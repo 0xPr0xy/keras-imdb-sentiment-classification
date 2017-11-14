@@ -1,5 +1,6 @@
 from keras.datasets import imdb
 from keras.models import model_from_json
+from keras.preprocessing import text
 from TrainModel import TrainModel
 
 class TrainedModel(object):
@@ -103,3 +104,17 @@ class TrainedModel(object):
         for current_index in rounded_indexed:
                 print('\n' + self.__get_expected_and_prediction(current_index, rounded_indexed))
                 print('sentence: ' + self.__get_input_sentence(current_index))
+
+    def one_hot(self, text_input):
+        """
+        make prediction on custom sentence
+        """
+        indexed_sentence = text.one_hot(text_input, self.dataset.num_words)
+        padded_indexed_sentence = self.dataset.pad_sentence(indexed_sentence)
+        predictions = self.model.predict(padded_indexed_sentence)
+        print(predictions)
+        rounded_indexed = self.__get_predictions(predictions)
+        print('prediction: '+str(rounded_indexed[0]))
+        print('sentence: '+text_input)
+
+        return self

@@ -15,7 +15,7 @@ class TrainModel(object):
 
     def create_model(self, num_words, max_sentence_length, embedding_vector_len):
         """
-        create a neural net for classifying imdb reviews with a score of 0 (negative) or 1 (positive)
+        create a neural net for classifying imdb reviews with a score in range (0,1)
         """
         self.model = Sequential()
         self.model.add(Embedding(num_words, embedding_vector_len, input_length=max_sentence_length))

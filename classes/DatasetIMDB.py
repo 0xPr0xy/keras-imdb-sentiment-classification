@@ -29,6 +29,10 @@ class DatasetIMDB(object):
         self.word_to_id = word_to_id
         self.id_to_word = {value:key for key,value in  word_to_id.items()}
 
+    def pad_sentence(self, sentence):
+
+        return sequence.pad_sequences([sentence], maxlen=self.max_sentence_length)
+    
     def get_sentence_for_index(self, data_index):
         """
         get the sentence for a given index which holds a list of word indexes
